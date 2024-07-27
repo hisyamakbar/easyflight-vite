@@ -1,0 +1,19 @@
+{
+  "name": "easyflight-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"npx tailwindcss -i ./src/style/input.css -o ./src/style/output.css --watch\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "tailwindcss": "^3.4.7",
+    "vite": "^5.3.4"
+  },
+  "dependencies": {
+    "flowbite": "^2.4.1"
+  }
+}
