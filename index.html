@@ -3,66 +3,1065 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <link rel="shortcut icon" href="public/favicon.svg" type="image/x-icon" />
+        <title>EasyFlight</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
         <link href="src/style/output.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="/src/style/main.css" />
     </head>
-    <body>
-        <div
-            id="modalEl"
-            tabindex="-1"
-            aria-hidden="true"
-            class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-        >
-            <div class="relative w-full max-w-2xl max-h-full">
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-600">
-                        <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">Terms of Service</h3>
-                        <button
-                            type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+    <body class="bg-white font-poppins dark:bg-[#141414]">
+        <div class="flex min-h-screen">
+            <!-- Left Side -->
+            <div
+                class="flex min-w-[290px] flex-col justify-between border-r-2 border-r-[#F2F2F2] p-9 transition-all duration-300 dark:border-r-[#1A1A1A] gap-14"
+            >
+                <!-- Logo -->
+                <a href="#">
+                    <div class="flex h-[45px] shrink-0">
+                        <img id="logo" src="public/logo/Logo.svg" alt="logo" class="object-contain" />
+                    </div>
+                </a>
+                <!-- Navigation -->
+                <nav class="flex flex-col gap-6">
+                    <a href="">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="flex size-10 items-center justify-center rounded-xl bg-[#155EFB] text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M9 3H4C3.44772 3 3 3.44772 3 4V11C3 11.5523 3.44772 12 4 12H9C9.55228 12 10 11.5523 10 11V4C10 3.44772 9.55228 3 9 3Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M20 3H15C14.4477 3 14 3.44772 14 4V7C14 7.55228 14.4477 8 15 8H20C20.5523 8 21 7.55228 21 7V4C21 3.44772 20.5523 3 20 3Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M20 12H15C14.4477 12 14 12.4477 14 13V20C14 20.5523 14.4477 21 15 21H20C20.5523 21 21 20.5523 21 20V13C21 12.4477 20.5523 12 20 12Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M9 16H4C3.44772 16 3 16.4477 3 17V20C3 20.5523 3.44772 21 4 21H9C9.55228 21 10 20.5523 10 20V17C10 16.4477 9.55228 16 9 16Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <p class="text-sm font-medium tracking-[-0.28px] text-[#14151A] transition-all duration-300 dark:text-white">Dashboard</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Deals -->
+                    <a href="" class="group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="flex size-10 items-center justify-center rounded-xl bg-transparent text-[#969696] transition-all duration-300 group-hover:bg-[#F7F7F7] group-hover:dark:bg-[#1A1A1A]"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M2 22H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M6.36 17.4L4 17L2 13L3.1 12.45C3.37916 12.3093 3.6874 12.2361 4 12.2361C4.3126 12.2361 4.62084 12.3093 4.9 12.45L5.07 12.55C5.34916 12.6907 5.6574 12.7639 5.97 12.7639C6.2826 12.7639 6.59084 12.6907 6.87 12.55L8 12L5 6L5.9 5.55C6.23267 5.38635 6.60429 5.31838 6.97335 5.3537C7.34242 5.38902 7.6944 5.52622 7.99 5.75L12.01 8.75C12.3066 8.97572 12.6604 9.11404 13.0315 9.14938C13.4025 9.18472 13.7761 9.11567 14.11 8.95L18.3 6.89C18.8354 6.62009 19.4523 6.55948 20.03 6.72L21 7C21.2004 7.05566 21.3859 7.15527 21.543 7.29161C21.7001 7.42794 21.8248 7.59756 21.9082 7.78814C21.9915 7.97873 22.0313 8.18548 22.0247 8.39338C22.0181 8.60128 21.9652 8.80509 21.87 8.99L21.49 9.75C21.26 10.21 20.89 10.59 20.42 10.83L7.58 17.2C7.20245 17.387 6.77547 17.45 6.36 17.38V17.4Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <p class="text-sm tracking-[-0.28px] text-[#14151A] transition-all duration-300 group-hover:font-medium dark:text-white">
+                                    Deals
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Clients -->
+                    <a href="" class="group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="flex size-10 items-center justify-center rounded-xl bg-transparent text-[#969696] transition-all duration-300 group-hover:bg-[#F7F7F7] group-hover:dark:bg-[#1A1A1A]"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M7 21V19C7 18.4696 7.21071 17.9609 7.58579 17.5858C7.96086 17.2107 8.46957 17 9 17H15C15.5304 17 16.0391 17.2107 16.4142 17.5858C16.7893 17.9609 17 18.4696 17 19V21"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <p class="text-sm tracking-[-0.28px] text-[#14151A] transition-all duration-300 group-hover:font-medium dark:text-white">
+                                    Clients
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- My Site -->
+                    <a href="" class="group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="flex size-10 items-center justify-center rounded-xl bg-transparent text-[#969696] transition-all duration-300 group-hover:bg-[#F7F7F7] group-hover:dark:bg-[#1A1A1A]"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M14 14H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M14 18H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M14 10H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M14 6H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M18 12H20C20.5304 12 21.0391 12.2107 21.4142 12.5858C21.7893 12.9609 22 13.4696 22 14V20C22 20.5304 21.7893 21.0391 21.4142 21.4142C21.0391 21.7893 20.5304 22 20 22H4C3.46957 22 2.96086 21.7893 2.58579 21.4142C2.21071 21.0391 2 20.5304 2 20V11C2 10.4696 2.21071 9.96086 2.58579 9.58579C2.96086 9.21071 3.46957 9 4 9H6"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M18 22V4C18 3.46957 17.7893 2.96086 17.4142 2.58579C17.0391 2.21071 16.5304 2 16 2H8C7.46957 2 6.96086 2.21071 6.58579 2.58579C6.21071 2.96086 6 3.46957 6 4V22"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <p class="text-sm tracking-[-0.28px] text-[#14151A] transition-all duration-300 group-hover:font-medium dark:text-white">
+                                    My Site
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Message -->
+                    <a href="" class="group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="flex size-10 items-center justify-center rounded-xl bg-transparent text-[#969696] transition-all duration-300 group-hover:bg-[#F7F7F7] group-hover:dark:bg-[#1A1A1A]"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M14 9C14 9.53043 13.7893 10.0391 13.4142 10.4142C13.0391 10.7893 12.5304 11 12 11H6L2 15V4C2 2.9 2.9 2 4 2H12C12.5304 2 13.0391 2.21071 13.4142 2.58579C13.7893 2.96086 14 3.46957 14 4V9Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M18 9H20C20.5304 9 21.0391 9.21071 21.4142 9.58579C21.7893 9.96086 22 10.4696 22 11V22L18 18H12C11.4696 18 10.9609 17.7893 10.5858 17.4142C10.2107 17.0391 10 16.5304 10 16V15"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <p class="text-sm tracking-[-0.28px] text-[#14151A] transition-all duration-300 group-hover:font-medium dark:text-white">
+                                    Message
+                                </p>
+                            </div>
+                            <span
+                                class="flex items-center justify-center rounded-lg bg-[#E5E5CB] p-[2px_8px] transition-all duration-300 group-hover:font-medium dark:bg-[#4D4D24] dark:text-white"
+                                >2</span
+                            >
+                        </div>
+                    </a>
+                    <!-- Settings -->
+                    <a href="" class="group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="flex size-10 items-center justify-center rounded-xl bg-transparent text-[#969696] transition-all duration-300 group-hover:bg-[#F7F7F7] group-hover:dark:bg-[#1A1A1A]"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M12.22 2H11.78C11.2496 2 10.7409 2.21071 10.3658 2.58579C9.99072 2.96086 9.78 3.46957 9.78 4V4.18C9.77964 4.53073 9.68706 4.87519 9.51154 5.17884C9.33602 5.48248 9.08374 5.73464 8.78 5.91L8.35 6.16C8.04596 6.33554 7.70108 6.42795 7.35 6.42795C6.99893 6.42795 6.65404 6.33554 6.35 6.16L6.2 6.08C5.74107 5.81526 5.19584 5.74344 4.684 5.88031C4.17217 6.01717 3.73555 6.35154 3.47 6.81L3.25 7.19C2.98526 7.64893 2.91345 8.19416 3.05031 8.706C3.18717 9.21783 3.52154 9.65445 3.98 9.92L4.13 10.02C4.43228 10.1945 4.68362 10.4451 4.85905 10.7468C5.03448 11.0486 5.1279 11.391 5.13 11.74V12.25C5.1314 12.6024 5.03965 12.949 4.86405 13.2545C4.68844 13.5601 4.43521 13.8138 4.13 13.99L3.98 14.08C3.52154 14.3456 3.18717 14.7822 3.05031 15.294C2.91345 15.8058 2.98526 16.3511 3.25 16.81L3.47 17.19C3.73555 17.6485 4.17217 17.9828 4.684 18.1197C5.19584 18.2566 5.74107 18.1847 6.2 17.92L6.35 17.84C6.65404 17.6645 6.99893 17.5721 7.35 17.5721C7.70108 17.5721 8.04596 17.6645 8.35 17.84L8.78 18.09C9.08374 18.2654 9.33602 18.5175 9.51154 18.8212C9.68706 19.1248 9.77964 19.4693 9.78 19.82V20C9.78 20.5304 9.99072 21.0391 10.3658 21.4142C10.7409 21.7893 11.2496 22 11.78 22H12.22C12.7504 22 13.2591 21.7893 13.6342 21.4142C14.0093 21.0391 14.22 20.5304 14.22 20V19.82C14.2204 19.4693 14.3129 19.1248 14.4885 18.8212C14.664 18.5175 14.9163 18.2654 15.22 18.09L15.65 17.84C15.954 17.6645 16.2989 17.5721 16.65 17.5721C17.0011 17.5721 17.346 17.6645 17.65 17.84L17.8 17.92C18.2589 18.1847 18.8042 18.2566 19.316 18.1197C19.8278 17.9828 20.2645 17.6485 20.53 17.19L20.75 16.8C21.0147 16.3411 21.0866 15.7958 20.9497 15.284C20.8128 14.7722 20.4785 14.3356 20.02 14.07L19.87 13.99C19.5648 13.8138 19.3116 13.5601 19.136 13.2545C18.9604 12.949 18.8686 12.6024 18.87 12.25V11.75C18.8686 11.3976 18.9604 11.051 19.136 10.7455C19.3116 10.4399 19.5648 10.1862 19.87 10.01L20.02 9.92C20.4785 9.65445 20.8128 9.21783 20.9497 8.706C21.0866 8.19416 21.0147 7.64893 20.75 7.19L20.53 6.81C20.2645 6.35154 19.8278 6.01717 19.316 5.88031C18.8042 5.74344 18.2589 5.81526 17.8 6.08L17.65 6.16C17.346 6.33554 17.0011 6.42795 16.65 6.42795C16.2989 6.42795 15.954 6.33554 15.65 6.16L15.22 5.91C14.9163 5.73464 14.664 5.48248 14.4885 5.17884C14.3129 4.87519 14.2204 4.53073 14.22 4.18V4C14.22 3.46957 14.0093 2.96086 13.6342 2.58579C13.2591 2.21071 12.7504 2 12.22 2Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <p class="text-sm tracking-[-0.28px] text-[#14151A] transition-all duration-300 group-hover:font-medium dark:text-white">
+                                    Settings
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="h-[2px] w-full bg-[#F2F2F2] transition-all duration-300 dark:bg-[#1A1A1A]"></div>
+                    <!-- Dark mode -->
+                    <label for="toggleBtn" class="group flex items-center justify-between">
+                        <input type="checkbox" id="toggleBtn" class="peer hidden" />
+                        <div class="flex">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="flex size-10 items-center justify-center rounded-xl bg-transparent text-[#969696] transition-all duration-300 group-hover:bg-[#F7F7F7] group-hover:dark:bg-[#1A1A1A]"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M12 3C10.8065 4.19347 10.136 5.81217 10.136 7.5C10.136 9.18783 10.8065 10.8065 12 12C13.1935 13.1935 14.8122 13.864 16.5 13.864C18.1878 13.864 19.8065 13.1935 21 12C21 13.78 20.4722 15.5201 19.4832 17.0001C18.4943 18.4802 17.0887 19.6337 15.4442 20.3149C13.7996 20.9961 11.99 21.1743 10.2442 20.8271C8.49836 20.4798 6.89472 19.6226 5.63604 18.364C4.37737 17.1053 3.5202 15.5016 3.17294 13.7558C2.82567 12.01 3.0039 10.2004 3.68509 8.55585C4.36628 6.91131 5.51983 5.50571 6.99987 4.51677C8.47991 3.52784 10.22 3 12 3Z"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                                <p class="text-sm tracking-[-0.28px] text-[#14151A] transition-all duration-300 group-hover:font-medium dark:text-white">
+                                    Dark Mode
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex w-[50px] items-center justify-start rounded-full bg-[#EFF0F5] p-[2px] transition-all duration-300 peer-checked:justify-end dark:bg-[#242424]"
                         >
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <div
+                                class="toggleCircle size-[26px] rounded-full bg-white shadow-[2px_2px_4px_0px_hsla(230,_23%,_57%,_0.2);] transition-all duration-300 dark:bg-[#141414] dark:shadow-none"
+                            ></div>
+                        </div>
+                    </label>
+                </nav>
+                <!-- Card -->
+                <div class="flex flex-col gap-4 rounded-[26px] bg-[#10062B] p-[30px] transition-all duration-300 dark:bg-white">
+                    <div class="relative h-[58px] bg-transparent">
+                        <div class="absolute -right-[31px] -top-[41px] flex h-[100px] shrink-0">
+                            <img src="public/images/plane.svg" alt="plane" class="size-full" />
+                        </div>
+                    </div>
+                    <p class="text-center text-base leading-[26px] tracking-[-2%] text-white dark:text-[#10062B]">
+                        Updating your plan <br />
+                        for Premium!
+                    </p>
+                    <a href="#" class="rounded-xl bg-white p-[12px_32px] text-center text-xs leading-[18px] text-[#10062B] dark:bg-[#141414] dark:text-white"
+                        >Upgrade Now</a
+                    >
+                </div>
+            </div>
+
+            <!-- Middle -->
+            <div class="w-3/4 font-poppins dark:bg-[#141414] transition-all duration-300 p-9 flex flex-col gap-6 overflow-y-auto h-screen">
+                <!-- Dashboard Heading -->
+                <div class="flex items-start justify-between">
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-3xl font-medium leading-[45px] text-[#212531] transition-all duration-300 dark:text-white">Dashboard</h2>
+                        <button class="flex gap-3 items-center text-[#155EFB]">
+                            <span
+                                class="flex size-6 shrink-0 text-[#155EFB] text-xs leading-[18px] tracking-[0.84px] font-medium dark:text-[#2E6FFB] transition-all duration-300 bg-[#D9E8FF] dark:bg-[#00193F] rounded-full items-center justify-center"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                    <path d="M3.3335 8.5H12.6668" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8 3.83334V13.1667" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            Add New Widgets
+                        </button>
+                    </div>
+
+                    <form class="min-w-80">
+                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none dark:text-[#555] text-[#5E6C87]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path d="M21.0002 21L16.7002 16.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <input
+                                type="search"
+                                id="default-search"
+                                class="block w-full p-3 ps-[44px] text-xs leading-[18px] text-gray-900 rounded-lg bg-[#F4F7FF] dark:bg-[#333] dark:placeholder-[#555] dark:text-white border-none focus:ring-0"
+                                placeholder="Search anything ..."
+                                required
+                            />
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="flex gap-5">
+                    <!-- Sales Performance -->
+                    <div
+                        class="p-[18px] flex flex-col bg-white shadow-[4px_12px_64px_0px_#3D60AB1A;] outline-0 dark:shadow-none dark:bg-[#1D1D1D] outline dark:outline-1 dark:outline-[#555] transition-all duration-300 rounded-[20px] gap-[14px] w-3/5"
+                    >
+                        <div class="flex justify-between">
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-xl leading-[30px] tracking-[-0.4px] text-[#212531] dark:text-white">Sales Performance</h3>
+                                <p class="text-xs font-normal leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Visited 10 of 100 countries.</p>
+                            </div>
+                            <button
+                                class="flex size-fit border-[#EBECF1] dark:border-[#333] items-center gap-3 text-nowrap rounded-xl bg-transparent p-[12px_20px] text-[#212531] transition-all duration-300 dark:text-white border"
+                            >
+                                <span class="flex size-4 shrink-0 text-[#5E6C87] transition-all duration-300 dark:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path
+                                            d="M2.6665 8V13.3333C2.6665 13.687 2.80698 14.0261 3.05703 14.2761C3.30708 14.5262 3.64622 14.6667 3.99984 14.6667H11.9998C12.3535 14.6667 12.6926 14.5262 12.9426 14.2761C13.1927 14.0261 13.3332 13.687 13.3332 13.3333V8"
+                                            stroke="#5E6C87"
+                                            stroke-width="1.33333"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M10.6668 4.00004L8.00016 1.33337L5.3335 4.00004"
+                                            stroke="#5E6C87"
+                                            stroke-width="1.33333"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path d="M8 1.33337V10" stroke="#5E6C87" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                Export
+                            </button>
+                        </div>
+                        <!-- Chart -->
+                        <div class="w-full h-[148px] bg-pink-600"></div>
+                        <!-- view and sales -->
+                        <div class="flex gap-8 p-[18px_30px] border border-[#EBECF1] dark:border-[#333] items-center rounded-2xl justify-evenly">
+                            <div class="flex gap-[14px] items-center justify-center">
+                                <div class="flex shrink-0 size-[46px] rounded-full overflow-hidden">
+                                    <img src="public/icons/sales.png" alt="sales" class="size-full object-contain" />
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-xs leading-[18px] tracking-[0.24px] dark:text-[#686F81]">Views</p>
+                                    <p class="text-xl leading-[30px] tracking-[-0.4px] text-[#212531] dark:text-white">20,751</p>
+                                </div>
+                            </div>
+                            <div class="h-[30px] w-px bg-[#F2F2F2] transition-all duration-300 dark:bg-[#1A1A1A]"></div>
+                            <div class="flex gap-[14px] items-center justify-center">
+                                <div class="flex shrink-0 size-[46px] rounded-full overflow-hidden">
+                                    <img src="public/icons/view.png" alt="eye" class="size-full object-contain" />
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-xs leading-[18px] tracking-[0.24px] dark:text-[#686F81]">Sales</p>
+                                    <p class="text-xl leading-[30px] tracking-[-0.4px] text-[#212531] dark:text-white">2,564</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cards -->
+                    <div class="flex flex-col gap-5 w-2/5">
+                        <!-- Card -->
+                        <div class="flex gap-5 p-[18px] rounded-[20px] bg-[#0068FF] justify-between">
+                            <div class="flex-col flex">
+                                <p class="text-sm font-normal tracking-[-0.28px] text-white transition-all duration-300 dark:text-white">Waiting list</p>
+                                <div class="flex gap-2 items-center justify-center">
+                                    <p class="text-[30px] leading-[45px] tracking-[0.9px] text-white">840</p>
+                                    <div class="flex gap-1">
+                                        <div class="flex shrink-0 size-3 rounded-full bg-[#42BE5E]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+                                                <path d="M9 8L6 5L3 8" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <p class="text-xs text-white">+1.5</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex shrink-0 size-[70px] overflow-hidden">
+                                <img src="public/icons/waiting-list.png" alt="icon" />
+                            </div>
+                        </div>
+                        <div class="flex gap-5 p-[18px] rounded-[20px] bg-[#C97BF3] justify-between">
+                            <div class="flex-col flex">
+                                <p class="text-sm font-normal tracking-[-0.28px] text-white transition-all duration-300 dark:text-white">Waiting list</p>
+                                <div class="flex gap-2 items-center justify-center">
+                                    <p class="text-[30px] leading-[45px] tracking-[0.9px] text-white">234</p>
+                                    <div class="flex gap-1">
+                                        <div class="flex shrink-0 size-3 rounded-full bg-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+                                                <path d="M9 8L6 5L3 8" stroke="#42BE5E" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <p class="text-xs text-white">+1.2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex shrink-0 size-[70px] overflow-hidden">
+                                <img src="public/icons/complete-flight.png" alt="icon" />
+                            </div>
+                        </div>
+                        <div class="flex gap-5 p-[18px] rounded-[20px] bg-[#10062B] justify-between">
+                            <div class="flex-col flex">
+                                <p class="text-sm font-normal tracking-[-0.28px] text-white transition-all duration-300 dark:text-white">Total reveneu</p>
+                                <div class="flex gap-2 items-center justify-center">
+                                    <p class="text-[30px] leading-[45px] tracking-[0.9px] text-white">$2m</p>
+                                    <div class="flex gap-1">
+                                        <div class="flex shrink-0 size-3 rounded-full bg-[#F34D51]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+                                                <rect y="0.5" width="12" height="12" rx="6" fill="#F34D51" />
+                                                <path d="M3 5L6 8L9 5" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <p class="text-xs text-white">-0.5</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex shrink-0 size-[70px] overflow-hidden">
+                                <img src="public/icons/total-reveneu.png" alt="icon" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- All Bookings -->
+                <div class="flex items-start justify-between">
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-3xl font-medium leading-[45px] text-[#212531] transition-all duration-300 dark:text-white">All Bookings</h2>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex size-fit items-center gap-3 text-nowrap rounded-lg text-xs font-medium leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white bg-[#F3F7FA] dark:bg-[#333] p-[8px_12px] transition-all duration-300"
+                            >
+                                Departure date
+                                <span class="flex size-4 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="#94A2BC" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </button>
+
+                            <button
+                                class="flex size-fit items-center gap-3 text-nowrap rounded-lg text-xs font-medium leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white bg-[#F3F7FA] dark:bg-[#333] p-[8px_12px] transition-all duration-300"
+                            >
+                                Booking type
+                                <span class="flex size-4 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="#94A2BC" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </button>
+
+                            <button
+                                class="flex size-fit items-center gap-3 text-nowrap rounded-lg text-xs font-medium leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white bg-[#F3F7FA] dark:bg-[#333] p-[8px_12px] transition-all duration-300"
+                            >
+                                Date range
+                                <span class="flex size-4 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="#94A2BC" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button
+                        class="flex size-fit border-[#EBECF1] dark:border-[#333] items-center gap-3 text-nowrap rounded-xl bg-transparent p-[12px_20px] text-[#212531] transition-all duration-300 dark:text-white border"
+                    >
+                        <span class="flex size-4 shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M5.3335 1.33325V3.99992" stroke="#5E6C87" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M10.6665 1.33325V3.99992" stroke="#5E6C87" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                 <path
-                                    stroke="currentColor"
+                                    d="M12.6667 2.66675H3.33333C2.59695 2.66675 2 3.2637 2 4.00008V13.3334C2 14.0698 2.59695 14.6667 3.33333 14.6667H12.6667C13.403 14.6667 14 14.0698 14 13.3334V4.00008C14 3.2637 13.403 2.66675 12.6667 2.66675Z"
+                                    stroke="#5E6C87"
+                                    stroke-width="1.33333"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                                 />
+                                <path d="M2 6.66675H14" stroke="#5E6C87" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            <span class="sr-only">Close modal</span>
+                        </span>
+                        Month
+                        <span class="flex size-4 shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M4 6L8 10L12 6" stroke="#155EFB" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-xs text-[#7A8090] leading-[18px] *:font-light">
+                            <th scope="col" class="pb-4 w-1/2">Destination</th>
+                            <th scope="col" class="pb-4 w-1/4 text-right">Date</th>
+                            <th scope="col" class="pb-4 text-right">People</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="pt-4 border-t border-[#F2F2F2] dark:border-[#1A1A1A]">
+                            <th scope="row" class="py-4 w-1/2">
+                                <div class="gap-6 flex">
+                                    <div class="gap-6 flex justify-between w-full">
+                                        <div class="flex gap-3">
+                                            <div class="flex size-[52px] shrink-0 overflow-hidden">
+                                                <img src="public/images/blue-plane.png" alt="plane" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">06:00</p>
+                                                <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Singapore</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex-col gap-2 justify-between flex grow">
+                                            <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] text-center font-normal">Duration: 2h 30m</p>
+                                            <div class="flex justify-between items-center">
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                                <div class="h-px bg-[#155EFB] w-full"></div>
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">SIN</p>
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">BDO</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex flex-col gap-1">
+                                            <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">08:30</p>
+                                            <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Bandung</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="py-4 text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-normal w-1/4 text-right">
+                                Nov 02, 2021
+                            </td>
+                            <td class="py-4 text-right w-1/4">
+                                <div class="flex -space-x-2 justify-end">
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-3.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-2.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="inline-flex items-center justify-center size-8 overflow-hidden bg-gray-100 rounded-full dark:bg-[#212530] outline outline-white outline-1"
+                                    >
+                                        <span class="text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-semibold">+2</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="pt-4 border-t border-[#F2F2F2] dark:border-[#1A1A1A]">
+                            <th scope="row" class="py-4 w-1/2">
+                                <div class="gap-6 flex">
+                                    <div class="gap-6 flex justify-between w-full">
+                                        <div class="flex gap-3">
+                                            <div class="flex size-[52px] shrink-0 overflow-hidden">
+                                                <img src="public/images/purple-plane.png" alt="plane" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">20:00</p>
+                                                <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">London</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex-col gap-2 justify-between flex grow">
+                                            <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] text-center font-normal">Duration: 3h 30m</p>
+                                            <div class="flex justify-between items-center">
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                                <div class="h-px bg-[#155EFB] w-full"></div>
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">LHR</p>
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">DME</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex flex-col gap-1">
+                                            <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">23:30</p>
+                                            <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Moscow</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="py-4 text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-normal w-1/4 text-right">
+                                Nov 02, 2021
+                            </td>
+                            <td class="py-4 text-right w-1/4">
+                                <div class="flex -space-x-2 justify-end">
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-1.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-2.png" alt="person" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="pt-4 border-t border-[#F2F2F2] dark:border-[#1A1A1A]">
+                            <th scope="row" class="py-4 w-1/2">
+                                <div class="gap-6 flex">
+                                    <div class="gap-6 flex justify-between w-full">
+                                        <div class="flex gap-3">
+                                            <div class="flex size-[52px] shrink-0 overflow-hidden">
+                                                <img src="public/images/blue-plane.png" alt="plane" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">06:00</p>
+                                                <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Singapore</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex-col gap-2 justify-between flex grow">
+                                            <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] text-center font-normal">Duration: 2h 30m</p>
+                                            <div class="flex justify-between items-center">
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                                <div class="h-px bg-[#155EFB] w-full"></div>
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">SIN</p>
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">BDO</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex flex-col gap-1">
+                                            <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">08:30</p>
+                                            <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Bandung</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="py-4 text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-normal w-1/4 text-right">
+                                Nov 02, 2021
+                            </td>
+                            <td class="py-4 text-right w-1/4">
+                                <div class="flex -space-x-2 justify-end">
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-3.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-2.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="inline-flex items-center justify-center size-8 overflow-hidden bg-gray-100 rounded-full dark:bg-[#212530] outline outline-white outline-1"
+                                    >
+                                        <span class="text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-semibold">+2</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="pt-4 border-t border-[#F2F2F2] dark:border-[#1A1A1A]">
+                            <th scope="row" class="py-4 w-1/2">
+                                <div class="gap-6 flex">
+                                    <div class="gap-6 flex justify-between w-full">
+                                        <div class="flex gap-3">
+                                            <div class="flex size-[52px] shrink-0 overflow-hidden">
+                                                <img src="public/images/purple-plane.png" alt="plane" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">20:00</p>
+                                                <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">London</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex-col gap-2 justify-between flex grow">
+                                            <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] text-center font-normal">Duration: 3h 30m</p>
+                                            <div class="flex justify-between items-center">
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                                <div class="h-px bg-[#155EFB] w-full"></div>
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">LHR</p>
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">DME</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex flex-col gap-1">
+                                            <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">23:30</p>
+                                            <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Moscow</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="py-4 text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-normal w-1/4 text-right">
+                                Nov 02, 2021
+                            </td>
+                            <td class="py-4 text-right w-1/4">
+                                <div class="flex -space-x-2 justify-end">
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-1.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-2.png" alt="person" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="pt-4 border-t border-[#F2F2F2] dark:border-[#1A1A1A]">
+                            <th scope="row" class="py-4 w-1/2">
+                                <div class="gap-6 flex">
+                                    <div class="gap-6 flex justify-between w-full">
+                                        <div class="flex gap-3">
+                                            <div class="flex size-[52px] shrink-0 overflow-hidden">
+                                                <img src="public/images/blue-plane.png" alt="plane" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">06:00</p>
+                                                <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Singapore</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex-col gap-2 justify-between flex grow">
+                                            <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] text-center font-normal">Duration: 2h 30m</p>
+                                            <div class="flex justify-between items-center">
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                                <div class="h-px bg-[#155EFB] w-full"></div>
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">SIN</p>
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">BDO</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex flex-col gap-1">
+                                            <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">08:30</p>
+                                            <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Bandung</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="py-4 text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-normal w-1/4 text-right">
+                                Nov 02, 2021
+                            </td>
+                            <td class="py-4 text-right w-1/4">
+                                <div class="flex -space-x-2 justify-end">
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-3.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-2.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="inline-flex items-center justify-center size-8 overflow-hidden bg-gray-100 rounded-full dark:bg-[#212530] outline outline-white outline-1"
+                                    >
+                                        <span class="text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-semibold">+2</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="pt-4 border-t border-[#F2F2F2] dark:border-[#1A1A1A]">
+                            <th scope="row" class="py-4 w-1/2">
+                                <div class="gap-6 flex">
+                                    <div class="gap-6 flex justify-between w-full">
+                                        <div class="flex gap-3">
+                                            <div class="flex size-[52px] shrink-0 overflow-hidden">
+                                                <img src="public/images/purple-plane.png" alt="plane" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">20:00</p>
+                                                <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">London</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex-col gap-2 justify-between flex grow">
+                                            <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] text-center font-normal">Duration: 3h 30m</p>
+                                            <div class="flex justify-between items-center">
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                                <div class="h-px bg-[#155EFB] w-full"></div>
+                                                <div class="size-1 bg-white rounded-full outline outline-[0.5px] outline-[#155EFB]"></div>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">LHR</p>
+                                                <p class="text-[11px] text-[#7A8090] leading-[17px] dark:text-[#555] font-normal">DME</p>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="flex flex-col gap-1">
+                                            <p class="text-xl leading-[30px] font-medium tracking-[0.4px] text-[#212531] dark:text-white">23:30</p>
+                                            <p class="text-xs font-light leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Moscow</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="py-4 text-xs leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white font-normal w-1/4 text-right">
+                                Nov 02, 2021
+                            </td>
+                            <td class="py-4 text-right w-1/4">
+                                <div class="flex -space-x-2 justify-end">
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-1.png" alt="person" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex size-8 shrink-0 rounded-full outline outline-white outline-1 overflow-hidden">
+                                            <img src="public/images/person-2.png" alt="person" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right Side -->
+            <div class="w-1/4 transition-all duration-300">
+                <!-- Top section -->
+                <div class="relative flex h-[45%]">
+                    <div class="flex size-fit w-full items-center justify-between p-9">
+                        <!-- Notification Icon -->
+
+                        <button
+                            id="dropdownNotificationButton"
+                            data-dropdown-toggle="dropdownNotification"
+                            data-dropdown-offset-skidding="-180"
+                            class="relative inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400"
+                            type="button"
+                        >
+                            <div class="flex size-6 shrink-0 text-[#212530] transition-all duration-300 dark:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M6 8C6 6.4087 6.63214 4.88258 7.75736 3.75736C8.88258 2.63214 10.4087 2 12 2C13.5913 2 15.1174 2.63214 16.2426 3.75736C17.3679 4.88258 18 6.4087 18 8C18 15 21 17 21 17H3C3 17 6 15 6 8Z"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M10.2998 21C10.4672 21.3044 10.7133 21.5583 11.0123 21.7352C11.3113 21.912 11.6524 22.0053 11.9998 22.0053C12.3472 22.0053 12.6883 21.912 12.9873 21.7352C13.2864 21.5583 13.5324 21.3044 13.6998 21"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </div>
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div
+                            id="dropdownNotification"
+                            class="z-20 hidden w-full max-w-sm bg-white divide-y divide-[#F2F2F2] rounded-lg shadow dark:bg-[#141414] dark:divide-[#1A1A1A]"
+                            aria-labelledby="dropdownNotificationButton"
+                        >
+                            <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:bg-[#141414] dark:text-white">
+                                Notifications
+                            </div>
+                            <div class="divide-y divide-[#F2F2F2] dark:divide-[#1A1A1A] flex items-center justify-center min-h-52">
+                                <p class="text-gray-400">All caught up, no new notifications.</p>
+                            </div>
+                        </div>
+
+                        <!-- Profile -->
+                        <button
+                            id="dropdownAvatarNameButton"
+                            data-dropdown-toggle="dropdownAvatarName"
+                            class="flex items-center justify-center gap-[10px] rounded-full bg-white p-[4px_10px_4px_4px] transition-all duration-300 dark:bg-[#141414]"
+                            type="button"
+                        >
+                            <!-- Picture -->
+                            <div class="flex size-9 shrink-0 overflow-hidden rounded-full">
+                                <img src="public/images/shopia.png" alt="profile image" />
+                            </div>
+                            <!-- Name -->
+                            <div class="flex items-center justify-center gap-1">
+                                <p class="text-xs font-medium leading-[18px] tracking-[0.36px] text-[#212530] dark:text-white">Shopia W.</p>
+                                <div class="flex size-[14px] shrink-0 text-[#155EFB]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                        <path
+                                            d="M3.5 5.25L7 8.75L10.5 5.25"
+                                            stroke="currentColor"
+                                            stroke-width="1.16667"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                            </div>
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div
+                            id="dropdownAvatarName"
+                            class="z-10 hidden bg-white divide-y divide-[#F2F2F2] rounded-lg shadow w-44 dark:bg-[#141414] dark:divide-[#1A1A1A]"
+                        >
+                            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                                <div class="font-medium">Shopia Wulandari</div>
+                                <div class="truncate">Super Admin</div>
+                            </div>
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-[#F2F2F2] dark:hover:bg-gray-600 dark:hover:text-white font-medium">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-[#F2F2F2] dark:hover:bg-gray-600 dark:hover:text-white font-medium">Settings</a>
+                                </li>
+                            </ul>
+                            <div class="py-2">
+                                <a
+                                    href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F2F2F2] dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white font-medium"
+                                    >Sign out</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BG Image -->
+                    <div class="absolute -z-10 flex size-full shrink-0">
+                        <img src="public/images/flying plane.jpg" alt="flying plane" class="size-full object-cover" />
+                    </div>
+                </div>
+
+                <!-- Bottom section -->
+                <div class="flex h-[55%] flex-col gap-8 bg-[#F4F7FF] p-9 dark:bg-[#141414]">
+                    <!-- Heading and Button -->
+                    <div class="flex items-center justify-between">
+                        <!-- Heading -->
+                        <div class="flex flex-col gap-1">
+                            <h2 class="text-3xl font-medium leading-[45px] text-[#212531] transition-all duration-300 dark:text-white">Activity</h2>
+                            <p class="text-xs font-normal leading-[18px] tracking-[0.36px] text-[#212530] transition-all duration-300 dark:text-white">
+                                November 02, 2021
+                            </p>
+                        </div>
+                        <!-- Btn -->
+                        <button
+                            class="flex size-fit items-center gap-2 text-nowrap rounded-xl bg-[#155EFB] p-[14px_24px] text-white transition-all duration-300 dark:text-[#141414]"
+                        >
+                            <span class="flex size-4 shrink-0 text-white transition-all duration-300 dark:text-[#141414]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                    <path d="M3.3335 8.5H12.6668" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8 3.83334V13.1667" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            Add Plan
                         </button>
                     </div>
-                    <div class="p-6 space-y-6">
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world
-                            are updating their terms of service agreements to comply.
-                        </p>
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of
-                            data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that
-                            could personally affect them.
-                        </p>
+                    <!-- Date -->
+                    <div class="swiper swiper-container">
+                        <!-- gradient -->
+                        <div
+                            class="pointer-events-none absolute inset-0 z-50 bg-[linear-gradient(90deg,_#F4F7FF_0%,_rgba(244,_247,_255,_0)_49.99%,_rgba(244,_247,_255,_0)_50%,_#F4F7FF_100%);] transition-none dark:bg-[linear-gradient(90deg,_#141414_0%,_rgba(20,_20,_20,_0)_49.99%,_rgba(20,_20,_20,_0)_50%,_#141414_100%);]"
+                        ></div>
+                        <div id="swiper-wrapper" class="swiper-wrapper"></div>
                     </div>
-                    <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button
-                            type="button"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        >
-                            I accept
-                        </button>
-                        <button
-                            type="button"
-                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600"
-                        >
-                            Decline
-                        </button>
+                    <!-- BDO Cards-->
+                    <div class="flex h-full">
+                        <div id="bdoDataNo" class="customBorder flex h-full w-full items-center justify-center rounded-xl">
+                            <p class="text-3xl font-normal leading-[45px] text-[#D9D9D9] transition-all duration-300 dark:text-[#555]">No Data</p>
+                        </div>
+                        <div id="bdoData" class="flex w-full flex-col gap-4">
+                            <!-- card -->
+                            <div class="flex h-full items-center justify-center gap-8">
+                                <!-- Time -->
+                                <div class="flex flex-col">
+                                    <p class="text-xs font-medium leading-[18px] tracking-[0.36px] text-[#212530] transition-all duration-300 dark:text-white">
+                                        07:00
+                                    </p>
+                                    <p
+                                        class="text-right text-xs font-medium leading-[18px] tracking-[0.36px] text-[#212530] transition-all duration-300 dark:text-white"
+                                    >
+                                        am
+                                    </p>
+                                </div>
+                                <!-- Card -->
+                                <div class="bdoContainer relative z-10 flex h-full w-full flex-col gap-1 p-[20px_24px]">
+                                    <!-- image after -->
+                                    <div class="absolute inset-0 -z-10 rounded-3xl bg-[#A0D3FE] dark:bg-[#014378]"></div>
+                                    <!-- image before -->
+                                    <div class="bgPattern image-after absolute inset-0 -z-10 rounded-3xl"></div>
+                                    <div
+                                        class="slider absolute left-1/2 top-0 z-30 flex h-px w-[calc(100%+40px)] -translate-x-1/2 transform items-center justify-center bg-[#10062B] before:absolute before:-left-[12px] dark:bg-white"
+                                    >
+                                        <div class="absolute left-0 size-[10px] rounded-full bg-[#10062B] dark:bg-white"></div>
+                                    </div>
+                                    <p class="font-medium tracking-[0.32px] text-[#212530] transition-all duration-300 dark:text-white">BDO</p>
+                                    <p
+                                        class="text-xs font-semibold leading-[18px] tracking-[0.36px] text-[#212530] transition-all duration-300 dark:text-white"
+                                    >
+                                        Registration Success Ready
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- card -->
+                            <div class="flex items-center justify-center gap-8">
+                                <!-- Time -->
+                                <div class="flex flex-col">
+                                    <p class="text-xs font-medium leading-[18px] tracking-[0.36px] text-[#212530] transition-all duration-300 dark:text-white">
+                                        08:00
+                                    </p>
+                                    <p
+                                        class="text-right text-xs font-medium leading-[18px] tracking-[0.36px] text-[#212530] transition-all duration-300 dark:text-white"
+                                    >
+                                        am
+                                    </p>
+                                </div>
+                                <!-- Card -->
+                                <div class="flex w-full flex-col gap-1 rounded-3xl bg-[#E4E4C8] p-[20px_24px] dark:bg-[#484823]">
+                                    <p class="font-medium tracking-[0.32px] text-[#212530] transition-all duration-300 dark:text-white">BDO</p>
+                                    <p
+                                        class="text-xs font-semibold leading-[18px] tracking-[0.36px] text-[#212530] transition-all duration-300 dark:text-white"
+                                    >
+                                        Registration Success Ready
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <script src="node_modules/flowbite/dist/flowbite.min.js"></script>
-        <script src="src/script/Modal.js" type="module"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+        <script src="src/script/main.js"></script>
     </body>
 </html>

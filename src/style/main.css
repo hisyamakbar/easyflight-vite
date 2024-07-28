@@ -1,0 +1,104 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+    max-height: 74px;
+}
+
+.swiper .swiper-wrapper .swiper-slide {
+    height: fit-content;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.swiperText {
+    font-size: 12px; /* text-xs */
+    font-weight: 500; /* font-medium */
+    line-height: 18px; /* leading-[18px] */
+    letter-spacing: 0.36px; /* tracking-[0.36px] */
+    color: #212530; /* text-[#212530] */
+    transition: all 300ms; /* transition-all duration-300 */
+}
+
+.dark .swiperText {
+    color: white;
+}
+
+.swiper .swiper-wrapper .swiper-slide-active {
+    background-color: white;
+}
+
+.swiper .swiper-wrapper .swiper-slide-active p {
+    font-weight: 600;
+}
+
+.dark .swiper .swiper-wrapper .swiper-slide-active {
+    background-color: #1f1f1f;
+}
+
+.bgPattern {
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background: repeating-linear-gradient(-45deg, #8ac4f4, #8ac4f4 3px, #a0d3fe 3px, #a0d3fe 9px);
+}
+
+.dark .bgPattern {
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background: repeating-linear-gradient(-45deg, #0d5087, #0d5087 3px, #014378 3px, #014378 9px);
+}
+
+.image-after {
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0% 50%);
+}
+
+.customBorder {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23D9D9D9FF' stroke-width='5' stroke-dasharray='17%2c 10' stroke-dashoffset='12' stroke-linecap='butt'/%3e%3c/svg%3e");
+    border-radius: 24px;
+}
+
+.dark .customBorder {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23555555FF' stroke-width='5' stroke-dasharray='17%2c 10' stroke-dashoffset='12' stroke-linecap='butt'/%3e%3c/svg%3e");
+    border-radius: 24px;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes hide {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.transition {
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.show {
+    animation-name: show;
+    display: flex;
+}
+
+.hide {
+    animation-name: hide;
+    display: none;
+}
