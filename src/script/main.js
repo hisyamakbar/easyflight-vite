@@ -37,6 +37,19 @@ document.addEventListener("DOMContentLoaded", function () {
         logo.src = isDarkMode ? "public/logo/Logo-dark.svg" : "public/logo/Logo.svg";
     }
 
+    const todayDate = document.getElementById("todayDate");
+    const currentDate = new Date();
+    const options = { month: "long", day: "numeric", year: "numeric" };
+    todayDate.textContent = currentDate.toLocaleDateString(undefined, options);
+
+    const searchBar = document.getElementById("searchBar");
+    searchBar.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const inputText = searchBar.querySelector("input").value;
+        showToast(inputText);
+        searchBar.querySelector("input").value = "";
+    });
+
     // Initial load
     updateUI();
 
